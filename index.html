@@ -67,6 +67,7 @@
         }
       }
     </style>
+    <script src="app.js" defer></script>
   </head>
   <body class="font-poppins w-screen bg-White">
     <header
@@ -123,7 +124,7 @@
             </p>
 
             <button
-              class="flex items-center gap-2 bg-BrownTumbleweed text-White mt-10 py-3 px-10 rounded-full"
+              class="hero-btn flex items-center gap-2 bg-BrownTumbleweed text-AlbescentWhite font-semibold mt-10 py-3 px-10 rounded-full"
             >
               Order now
               <div
@@ -186,17 +187,28 @@
       <!-- Order Selected Products -->
       <section class="h-screen bg-White mx-32">
         <div class="content mt-32">
+          
           <h2 class="contentHeading">
             Cold
             <span class="underlineHeading">Coffee</span>
           </h2>
-          <div
-            class="product-container flex items-center justify-between mt-16"
-          >
+          <div class="main-product-container">
+            <!-- <div class="btn-container flex items-center justify-between"> -->
+            <!-- chevron left -->
+              <div class="left-btn bg-White w-12 h-12 rounded-full flex items-center justify-center shadow-2xl shadow-BrownTumbleweed cursor-pointer transform transition-transform duration-300 hover:scale-125 absolute -translate-x-5 translate-y-[17.6rem] z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#2F2105" class="size-6  ">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
+                </svg>
+              </div>
+           
+            </div>          
+            <div
+            class="product-container flex items-center gap-6 mt-16 relative"
+            >
             <!-- cold coffee -->
-            <div class="cold-coffee-products">
+            <!-- <div class="cold-coffee-products"> -->
               <div
-                class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-72 p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
+                class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-64 max-w-72 h-[80vh] p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
               >
                 <div class="img-container">
                   <img
@@ -225,27 +237,24 @@
                   </div>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
 
             <!-- Macchiato -->
-            <div class="cold-coffee-products">
+            <!-- <div class="cold-coffee-products"> -->
               <div
-                class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-72 p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
+                class="macchiato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-64 max-w-72 h-[80vh] p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
               >
                 <div class="img-container">
                   <img
-                    src="/assets/menu_item_1.png"
+                    src="/assets/menu_item_2.png"
                     alt=""
                     class="object-cover w-full h-full rounded-xl"
                   />
                 </div>
                 <div class="product-content flex flex-col gap-4">
-                  <h3 class="text-xl font-bold">Caramel Frappe</h3>
+                  <h3 class="text-xl font-bold">Macchiato</h3>
                   <p class="text-sm leading-relaxed">
-                    A delightful and indulgent icy beverage blending rich
-                    coffee, milk, ice, and sweet caramel syrup, creating a
-                    smooth and satisfying treat with a perfect harmony of
-                    caffeine and sweetness
+                    An espresso-based coffee characterized by a perfect balance of bold, concentrated espresso and a touch of velvety streamed milk., creating a nuanced and flavorful experience.
                   </p>
                   <div
                     class="price-and-orderbtn flex items-center justify-between mt-3"
@@ -259,32 +268,29 @@
                   </div>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
 
             <!-- Affogato -->
-            <div class="cold-coffee-products">
+            <!-- <div class="cold-coffee-products"> -->
               <div
-                class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-72 p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
+                class="affogato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-64 max-w-72 h-[80vh] p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
               >
                 <div class="img-container">
                   <img
-                    src="/assets/menu_item_1.png"
+                    src="/assets/menu_item_3.png"
                     alt=""
                     class="object-cover w-full h-full rounded-xl"
                   />
                 </div>
                 <div class="product-content flex flex-col gap-4">
-                  <h3 class="text-xl font-bold">Caramel Frappe</h3>
+                  <h3 class="text-xl font-bold">Affogato</h3>
                   <p class="text-sm leading-relaxed">
-                    A delightful and indulgent icy beverage blending rich
-                    coffee, milk, ice, and sweet caramel syrup, creating a
-                    smooth and satisfying treat with a perfect harmony of
-                    caffeine and sweetness
+                    Delectable Italian beverage featuring a scoop of creamy vanilla gelato or ice cream `drowned` or `affogato` in a shot of hot espresso,creating a delightful contrast.
                   </p>
                   <div
                     class="price-and-orderbtn flex items-center justify-between mt-3"
                   >
-                    <p class="price font-bold">$8.60</p>
+                    <p class="price font-bold">$11.40</p>
                     <button
                       class="bg-SepiaSkin text-White px-4 py-2 rounded-xl"
                     >
@@ -293,32 +299,29 @@
                   </div>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
 
             <!-- Cold Brew -->
-            <div class="cold-coffee-products">
+            <!-- <div class="cold-coffee-products"> -->
               <div
-                class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-72 p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
+                class="coldbrew bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-64 max-w-72 h-[80vh] p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
               >
                 <div class="img-container">
                   <img
-                    src="/assets/menu_item_1.png"
+                    src="/assets/menu_item_4.png"
                     alt=""
                     class="object-cover w-full h-full rounded-xl"
                   />
                 </div>
                 <div class="product-content flex flex-col gap-4">
-                  <h3 class="text-xl font-bold">Caramel Frappe</h3>
+                  <h3 class="text-xl font-bold">Cold Brew</h3>
                   <p class="text-sm leading-relaxed">
-                    A delightful and indulgent icy beverage blending rich
-                    coffee, milk, ice, and sweet caramel syrup, creating a
-                    smooth and satisfying treat with a perfect harmony of
-                    caffeine and sweetness
+                   Smooth and concentrated coffee beverage crafted by steeping coarsely ground coffee beans in cold water fro an extended period, resulting in a refreshing and less acidic.
                   </p>
                   <div
                     class="price-and-orderbtn flex items-center justify-between mt-3"
                   >
-                    <p class="price font-bold">$8.60</p>
+                    <p class="price font-bold">$6.40</p>
                     <button
                       class="bg-SepiaSkin text-White px-4 py-2 rounded-xl"
                     >
@@ -327,13 +330,20 @@
                   </div>
                 </div>
               </div>
-            </div>
+            <!-- </div> -->
+          <!-- </div> -->
+           <!-- chevron right -->
+              <div class="right-btn bg-White w-12 h-12 rounded-full flex items-center justify-center shadow-2xl shadow-BrownTumbleweed cursor-pointer transform transition-transform duration-300 hover:scale-125 absolute left-full -translate-x-6 z-10">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#2F2105" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+              </div>
           </div>
         </div>
       </section>
 
       <!-- sign up -->
-      <section class="w-screen w-full bg-AlbescentWhite text-BrownTumbleweed">
+      <section class="w-screen w-full bg-AlbescentWhite text-BrownTumbleweed mt-5">
         <div class="signup flex items-center gap-8 px-32 py-12">
           <img src="/assets/star-icon.png" alt="" />
           <div class="signup-context flex flex-col gap-4">
