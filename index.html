@@ -43,11 +43,15 @@
     <style type="text/tailwindcss">
       @layer components {
         .desktopNav {
-          @apply text-xl text-BrownTumbleweed hover:text-MacaroniCheese;
+          @apply text-xl text-BrownTumbleweed hover:text-MacaroniCheese mr-10 md:mr-5;
         }
 
         .product {
-          @apply flex flex-col items-center gap-3;
+          @apply flex flex-col items-center gap-3 text-center mt-5;
+        }
+
+        .img-width {
+          @apply w-20 md:w-24 lg:w-auto;
         }
 
         .product-title {
@@ -55,7 +59,7 @@
         }
 
         .contentHeading {
-          @apply text-2xl font-bold tracking-wider text-BrownTumbleweed;
+          @apply text-xl md:text-2xl lg:text-3xl  font-bold tracking-wider text-BrownTumbleweed;
         }
 
         .underlineHeading {
@@ -63,22 +67,26 @@
         }
 
         .footerHeading {
-          @apply uppercase text-xl text-RomanCoffee hover:text-CoffeeHero font-semibold tracking-wider cursor-pointer;
+          @apply uppercase text-lg lg:text-xl text-RomanCoffee hover:text-CoffeeHero font-semibold lg:tracking-wider cursor-pointer;
         }
       }
     </style>
     <script src="app.js" defer></script>
   </head>
-  <body class="font-poppins w-screen bg-White">
+  <body class="font-poppins w-screen bg-White relative">
     <header
-      class="flex justify-between items-center absolute top-0 left-0 right-0 z-10 w-10/12 mx-auto py-5"
+      class="flex items-center justify-between px-6 md:px-10 lg:px-28 py-4 md:py-6 lg:py-6 absolute top-0 left-0 right-0 z-10 w-full"
     >
-      <div class="logo w-16 cursor-pointer">
-        <img src="/assets/CoffeeLove.svg" alt="company logo" />
+      <!-- website logo -->
+      <div class="logo-container cursor-pointer w-8 md:w-10 lg:w-16">
+        <img src="./assets/CoffeeLove.svg" alt="logo" />
       </div>
 
+      <!-- desktop nav bar-->
       <nav>
-        <ul class="flex items-center justify-between gap-8">
+        <ul
+          class="hidden md:flex lg:flex items-center justify-between gap-12 md:gap-4"
+        >
           <li class="desktopNav">
             <a href="#">Home</a>
           </li>
@@ -87,7 +95,10 @@
         </ul>
       </nav>
 
-      <div class="searchbar-and-cart flex items-center gap-4">
+      <!-- search bar and cart icon -->
+      <div
+        class="searchbar-and-cart flex items-center gap-4 md:gap-2 hidden md:flex lg:flex items-center"
+      >
         <div
           class="searchbar flex items-center gap-2 bg-White p-2 rounded-full"
         >
@@ -103,14 +114,65 @@
           <img src="/assets/icons-cart.png" alt="" />
         </div>
       </div>
+
+      <!-- mobile nav bar icon -->
+      <div class="hamburger-container block md:hidden lg:hidden cursor-pointer">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2.5"
+          stroke="#2F2105"
+          class="size-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
+      </div>
     </header>
+    
+    <!-- mobile bar -->
+    <section class="mobile-bar bg-AlbescentWhite w-screen h-[40vh] p-5 hidden md:hidden lg:hidden fixed top-0 left-0">
+      <div class="mobile-bar-top mb-3 flex items-center justify-between">
+        <div class="footer-logo  flex items-center">
+          <div class="logo w-8 cursor-pointer">
+            <img src="/assets/CoffeeLove.svg" alt="company logo" />
+          </div>
+          <h2 class='text-lg text-BrownTumbleweed font-bold'>CoffeeLove</h2>
+        </div>
+
+        <div class="cart cursor-pointer w-10 rounded-full bg-MacaroniCheese">
+          <img src="/assets/icons-cart.png" alt="" class='p-2' />
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li class="desktopNav mb-2">
+            <a href="#">Home</a>
+          </li>
+          <li class="desktopNav mb-2"><a href="#">Menu</a></li>
+          <li class="desktopNav mb-2"><a href="#">Delivery</a></li>
+        </ul>
+      </nav>
+      <div class="mobile-bar-btn flex justify-center mt-2">
+        <button class='bg-SepiaSkin hover:bg-Black py-2 px-6 text-sm text-AlbescentWhite rounded'>
+          close
+        </button>
+      </div>
+    </section>
 
     <main>
       <!-- Hero Section -->
-      <section class="flex items-center relative w-full h-screen">
-        <div class="bg-White w-3/5 h-full">
+      <section
+        class="hero-section flex items-center relative w-full h-[45vh] md:h-[60vh] lg:h-screen"
+      >
+        <div class="bg-White w-1/2 lg:w-3/5 h-full">
           <div
-            class="hero-text absolute top-1/2 left-1/2 -translate-x-full -translate-y-1/2 px-32"
+            class="hero-text hidden lg:block absolute top-[55%] left-1/2 -translate-x-full -translate-y-1/2 px-32"
           >
             <h1
               class="text-4xl font-bold text-BrownTumbleweed mb-5 leading-relaxed"
@@ -118,7 +180,7 @@
               The <span class="text-CoffeeHero">coffee </span>you will fall in
               <span class="text-CoffeeHero">love</span> with
             </h1>
-            <p class="text-xl text-BrownTumbleweed">
+            <p class="text-xl md:text-lg text-BrownTumbleweed">
               Slip, savour and spread the love - where every cup is a
               caffeinated hug at our cozy coffee haven!
             </p>
@@ -148,67 +210,99 @@
             </button>
           </div>
         </div>
-        <div class="bg-MacaroniCheese w-2/5 h-full">
-          <div class="coffee-beans float-right">
+        <div class="bg-MacaroniCheese w-1/2 lg:w-2/5 h-full">
+          <div class="coffee-beans hidden md:block lg:block float-right">
             <img src="/assets/hero-coffee-beans.png" alt="coffee beans" />
           </div>
+
           <div
-            class="coffee-cup absolute top-1/2 left-1/2 -translate-x-[20%] -translate-y-1/2 flex items-center justify-center"
+            class="coffee-cup absolute top-1/2 md:top-[55%] lg:top-[55%] left-1/2 -translate-x-[50%] lg:-translate-x-[20%] -translate-y-1/2 flex items-center justify-center w-60 md:w-80 lg:w-auto h-60 lg:h-auto"
           >
             <img src="/assets/coffee-image.png" alt="coffee" />
           </div>
         </div>
       </section>
 
+      <!-- Coffee intro section -->
+      <section class="my-5 block lg:hidden">
+        <div class="hero-text px-6 md:px-10 lg:px-28 py-4 md:py-6 lg:py-6">
+          <h1
+            class="text-2xl md:text-3xl font-semibold text-BrownTumbleweed mb-4 leading-relaxed"
+          >
+            The <span class="text-CoffeeHero">coffee </span>you will fall in
+            <span class="text-CoffeeHero">love</span> with
+          </h1>
+          <p class="text-base md:text-lg text-BrownTumbleweed">
+            Slip, savour and spread the love - where every cup is a caffeinated
+            hug at our cozy coffee haven!
+          </p>
+
+          <button
+            class="hero-btn text-lg flex items-center gap-2 bg-BrownTumbleweed text-AlbescentWhite font-semibold mt-8 py-2 md:py-3 px-6 md:px-8 rounded-full"
+          >
+            Order now
+            <div
+              class="btn-cart flex items-center justify-center bg-MacaroniCheese rounded-full w-7 h-7"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-4 text-White"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                />
+              </svg>
+            </div>
+          </button>
+        </div>
+      </section>
+
       <!-- Product Selection Section -->
-      <section class="bg-White relative w-10/12">
+      <section class="selection-section lg:relative lg:w-10/12">
         <div
-          class="products flex items-center justify-around bg-AlbescentWhite px-16 py-4 rounded-[60px] w-full absolute -top-20 mx-32"
+          class="products bg-AlbescentWhite px-12 py-8 w-full grid grid-cols-2 gap-5 lg:flex lg:flex-row lg:items-center lg:justify-around lg:px-16 lg:py-4 lg:rounded-[60px] lg:absolute lg:-top-20 lg:mx-32"
         >
           <div class="hot-coffee product">
-            <img src="/assets/hot-coffee.png" alt="" />
+            <img src="/assets/hot-coffee.png" alt="" class="img-width" />
             <h2 class="product-title">Hot Coffee</h2>
           </div>
           <div class="cold-coffee product">
-            <img src="/assets/cold-coffee.png" alt="" />
+            <img src="/assets/cold-coffee.png" alt="" class="img-width" />
             <h2 class="product-title text-SepiaSkin">Cold Coffee</h2>
           </div>
           <div class="tea product">
-            <img src="/assets/tea.png" alt="" />
+            <img src="/assets/tea.png" alt="" class="img-width" />
             <h2 class="product-title">Tea</h2>
           </div>
           <div class="desert product">
-            <img src="/assets/dessert.png" alt="" />
+            <img src="/assets/dessert.png" alt="" class="img-width" />
             <h2 class="product-title">Desert</h2>
           </div>
         </div>
       </section>
 
       <!-- Order Selected Products -->
-      <section class="h-screen bg-White mx-32">
-        <div class="content mt-32">
-          
+      <section
+        class="bg-White px-6 md:px-10 lg:px-28 py-4 md:py-6 lg:py-6"
+      >
+        <!-- cold coffee -->
+        <div class="content lg:mt-32">
           <h2 class="contentHeading">
             Cold
             <span class="underlineHeading">Coffee</span>
           </h2>
+
           <div class="main-product-container">
-            <!-- <div class="btn-container flex items-center justify-between"> -->
-            <!-- chevron left -->
-              <div class="left-btn bg-White w-12 h-12 rounded-full flex items-center justify-center shadow-2xl shadow-BrownTumbleweed cursor-pointer transform transition-transform duration-300 hover:scale-125 absolute -translate-x-5 translate-y-[17.6rem] z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#2F2105" class="size-6  ">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-                </svg>
-              </div>
-           
-            </div>          
-            <div
-            class="product-container flex items-center gap-6 mt-16 relative"
-            >
-            <!-- cold coffee -->
-            <!-- <div class="cold-coffee-products"> -->
+            <div class="cold-coffee-products grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-16">
+            <!-- Caramel Frappe -->
               <div
-                class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-64 max-w-72 h-[80vh] p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
+                class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 h-auto  p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
               >
                 <div class="img-container">
                   <img
@@ -220,145 +314,122 @@
                 <div class="product-content flex flex-col gap-4">
                   <h3 class="text-xl font-bold">Caramel Frappé</h3>
                   <p class="text-sm leading-relaxed">
-                    A delightful and indulgent icy beverage blending rich
-                    coffee, milk, ice, and sweet caramel syrup, creating a
-                    smooth and satisfying treat with a perfect harmony of
-                    caffeine and sweetness
+                    A delightful and indulgent icy beverage blending rich coffee, milk, ice,
+                    and sweet caramel syrup, creating a smooth and satisfying treat with a
+                    perfect harmony of caffeine and sweetness
                   </p>
-                  <div
-                    class="price-and-orderbtn flex items-center justify-between mt-3"
-                  >
+                  <div class="price-and-orderbtn flex items-center justify-between mt-3">
                     <p class="price font-bold">$8.60</p>
-                    <button
-                      class="bg-SepiaSkin text-White px-4 py-2 rounded-xl"
-                    >
+                    <button class="bg-SepiaSkin text-White px-4 py-2 rounded-xl">
                       Order now
                     </button>
                   </div>
                 </div>
               </div>
-            <!-- </div> -->
 
-            <!-- Macchiato -->
-            <!-- <div class="cold-coffee-products"> -->
+              <!-- Macchiato -->
               <div
-                class="macchiato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-64 max-w-72 h-[80vh] p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
-                <div class="img-container">
-                  <img
-                    src="/assets/menu_item_2.png"
-                    alt=""
-                    class="object-cover w-full h-full rounded-xl"
-                  />
-                </div>
-                <div class="product-content flex flex-col gap-4">
-                  <h3 class="text-xl font-bold">Macchiato</h3>
-                  <p class="text-sm leading-relaxed">
-                    An espresso-based coffee characterized by a perfect balance of bold, concentrated espresso and a touch of velvety streamed milk., creating a nuanced and flavorful experience.
-                  </p>
-                  <div
-                    class="price-and-orderbtn flex items-center justify-between mt-3"
-                  >
-                    <p class="price font-bold">$8.60</p>
-                    <button
-                      class="bg-SepiaSkin text-White px-4 py-2 rounded-xl"
-                    >
-                      Order now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            <!-- </div> -->
+    class="macchiato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 h-auto  p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
+  >
+    <div class="img-container">
+      <img
+        src="/assets/menu_item_2.png"
+        alt=""
+        class="object-cover w-full h-full rounded-xl"
+      />
+    </div>
+    <div class="product-content flex flex-col gap-4">
+      <h3 class="text-xl font-bold">Macchiato</h3>
+      <p class="text-sm leading-relaxed">
+        An espresso-based coffee characterized by a perfect balance of bold,
+        concentrated espresso and a touch of velvety streamed milk., creating a
+        nuanced and flavorful experience.
+      </p>
+      <div class="price-and-orderbtn flex items-center justify-between mt-3">
+        <p class="price font-bold">$8.60</p>
+        <button class="bg-SepiaSkin text-White px-4 py-2 rounded-xl">
+          Order now
+        </button>
+      </div>
+    </div>
+  </div>
 
-            <!-- Affogato -->
-            <!-- <div class="cold-coffee-products"> -->
-              <div
-                class="affogato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-64 max-w-72 h-[80vh] p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
-                <div class="img-container">
-                  <img
-                    src="/assets/menu_item_3.png"
-                    alt=""
-                    class="object-cover w-full h-full rounded-xl"
-                  />
-                </div>
-                <div class="product-content flex flex-col gap-4">
-                  <h3 class="text-xl font-bold">Affogato</h3>
-                  <p class="text-sm leading-relaxed">
-                    Delectable Italian beverage featuring a scoop of creamy vanilla gelato or ice cream `drowned` or `affogato` in a shot of hot espresso,creating a delightful contrast.
-                  </p>
-                  <div
-                    class="price-and-orderbtn flex items-center justify-between mt-3"
-                  >
-                    <p class="price font-bold">$11.40</p>
-                    <button
-                      class="bg-SepiaSkin text-White px-4 py-2 rounded-xl"
-                    >
-                      Order now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            <!-- </div> -->
+  <!-- Affogato -->
+    <div
+    class="affogato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 h-auto  p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
+  >
+    <div class="img-container">
+      <img
+        src="/assets/menu_item_3.png"
+        alt=""
+        class="object-cover w-full h-full rounded-xl"
+      />
+    </div>
+    <div class="product-content flex flex-col gap-4">
+      <h3 class="text-xl font-bold">Affogato</h3>
+      <p class="text-sm leading-relaxed">
+        Delectable Italian beverage featuring a scoop of creamy vanilla gelato
+        or ice cream `drowned` or `affogato` in a shot of hot espresso,creating
+        a delightful contrast.
+      </p>
+      <div class="price-and-orderbtn flex items-center justify-between mt-3">
+        <p class="price font-bold">$11.40</p>
+        <button class="bg-SepiaSkin text-White px-4 py-2 rounded-xl">
+          Order now
+        </button>
+      </div>
+    </div>
+  </div>
 
-            <!-- Cold Brew -->
-            <!-- <div class="cold-coffee-products"> -->
-              <div
-                class="coldbrew bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-64 max-w-72 h-[80vh] p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
-              >
-                <div class="img-container">
-                  <img
-                    src="/assets/menu_item_4.png"
-                    alt=""
-                    class="object-cover w-full h-full rounded-xl"
-                  />
-                </div>
-                <div class="product-content flex flex-col gap-4">
-                  <h3 class="text-xl font-bold">Cold Brew</h3>
-                  <p class="text-sm leading-relaxed">
-                   Smooth and concentrated coffee beverage crafted by steeping coarsely ground coffee beans in cold water fro an extended period, resulting in a refreshing and less acidic.
-                  </p>
-                  <div
-                    class="price-and-orderbtn flex items-center justify-between mt-3"
-                  >
-                    <p class="price font-bold">$6.40</p>
-                    <button
-                      class="bg-SepiaSkin text-White px-4 py-2 rounded-xl"
-                    >
-                      Order now
-                    </button>
-                  </div>
-                </div>
-              </div>
-            <!-- </div> -->
-          <!-- </div> -->
-           <!-- chevron right -->
-              <div class="right-btn bg-White w-12 h-12 rounded-full flex items-center justify-center shadow-2xl shadow-BrownTumbleweed cursor-pointer transform transition-transform duration-300 hover:scale-125 absolute left-full -translate-x-6 z-10">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="#2F2105" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                </svg>
-              </div>
+  <!-- Cold Brew -->
+   <div
+    class="coldbrew bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 h-auto p-4 rounded-xl flex flex-col gap-5 shadow-2xl hover:-translate-y-4 hover:scale-105 transition-all duration-300 ease-in-out"
+  >
+    <div class="img-container">
+      <img
+        src="/assets/menu_item_4.png"
+        alt=""
+        class="object-cover w-full h-full rounded-xl"
+      />
+    </div>
+    <div class="product-content flex flex-col gap-4">
+      <h3 class="text-xl font-bold">Cold Brew</h3>
+      <p class="text-sm leading-relaxed">
+        Smooth and concentrated coffee beverage crafted by steeping coarsely
+        ground coffee beans in cold water fro an extended period, resulting in a
+        refreshing and less acidic.
+      </p>
+      <div class="price-and-orderbtn flex items-center justify-between mt-3">
+        <p class="price font-bold">$6.40</p>
+        <button class="bg-SepiaSkin text-White px-4 py-2 rounded-xl">
+          Order now
+        </button>
+      </div>
+    </div>
+  </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- sign up -->
-      <section class="w-screen w-full bg-AlbescentWhite text-BrownTumbleweed mt-5">
-        <div class="signup flex items-center gap-8 px-32 py-12">
-          <img src="/assets/star-icon.png" alt="" />
+
+       <!-- sign up -->
+      <section class="w-screen bg-AlbescentWhite text-BrownTumbleweed mt-5 px-6 md:px-10 lg:px-28 py-4 md:py-6 lg:py-6">
+        <div class="signup flex items-center gap-8 lg:px-32 lg:py-12">
+          <img src="/assets/star-icon.png" alt="" class='w-14 md:w-auto lg:w-auto' />
           <div class="signup-context flex flex-col gap-4">
-            <h3 class="text-3xl font-bold">
+            <h3 class="text-xl md:text-2xl lg:text-3xl font-semibold lg:font-bold">
               Sign up to our coffee reward program!
             </h3>
-            <div class="learn-more flex items-center gap-2 text-lg font-bold"">
-              <h4>Learn More</h4>
+            <div class="learn-more flex items-center gap-2 text-base "">
+              <h4 class='font-medium md:font-semibold lg:font-bold'>Learn More</h4>
               <div class="arrow-right cursor-pointer">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
+                  stroke-width="3"
+                  stroke="#2F2105"
                   class="size-5"
                 >
                   <path
@@ -373,13 +444,14 @@
         </div>
       </section>
 
+      
       <!-- Special Menu section-->
-      <section class="w-screen h-screen w-full bg-White mt-6">
-        <div class="special-menu mx-32">
+      <section class="w-screen lg:h-screen bg-White mt-8 px-6 md:px-10 lg:px-28 py-4 md:py-6 lg:py-6">
+        <div class="special-menu">
           <h3 class="contentHeading">Special menu <span class="underlineHeading">for you</span></h3>
-          <div class="special-menu-products mt-10 grid grid-cols-4 grid-rows-2 gap-6">
+          <div class="special-menu-products mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
              <!-- Macchiato -->
-           <div class="macchiato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
+           <div class="macchiato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
               <img src="/assets/menu_item_2.png" alt="" class='rounded-3xl'>
               <h3 class="text-xl font-bold">Macchiato</h3>
               <div class="price-and-btn flex items-center justify-between">
@@ -394,7 +466,7 @@
 
           <!-- Caramel Frappé-->
 
-          <div class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
+          <div class="caramel-frappe bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
               <img src="/assets/menu_item_1.png" alt="" class='rounded-3xl'>
               <h3 class="text-xl font-bold">Caramel Frappé </h3>
               <div class="price-and-btn flex items-center justify-between">
@@ -409,7 +481,7 @@
 
           <!-- Macha Latte -->
 
-          <div class="macha-latte bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
+          <div class="macha-latte bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
               <img src="/assets/menu_item_5.png" alt="" class='rounded-3xl'>
               <h3 class="text-xl font-bold">Macha Latte</h3>
               <div class="price-and-btn flex items-center justify-between">
@@ -424,7 +496,7 @@
 
           <!-- Hot Chocolate -->
 
-          <div class="hot-chocolate bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
+          <div class="hot-chocolate bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
               <img src="/assets/menu_item_6.png" alt="" class='rounded-3xl'>
               <h3 class="text-xl font-bold">Hot Chocolate</h3>
               <div class="price-and-btn flex items-center justify-between">
@@ -439,7 +511,7 @@
 
           <!-- Fruit Tea -->
 
-          <div class="fruit-tea bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
+          <div class="fruit-tea bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
               <img src="/assets/menu_item_4.png" alt="" class='rounded-3xl'>
               <h3 class="text-xl font-bold">Fruit Tea</h3>
               <div class="price-and-btn flex items-center justify-between">
@@ -454,7 +526,7 @@
 
           <!-- Cappacino -->
 
-          <div class="cappacino bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
+          <div class="cappacino bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
               <img src="/assets/menu_item_8.png" alt="" class='rounded-3xl'>
               <h3 class="text-xl font-bold">Cappacino</h3>
               <div class="price-and-btn flex items-center justify-between">
@@ -469,7 +541,7 @@
 
           <!-- Affogato -->
 
-          <div class="Affogato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
+          <div class="Affogato bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
               <img src="/assets/menu_item_3.png" alt="" class='rounded-3xl'>
               <h3 class="text-xl font-bold">Affogato</h3>
               <div class="price-and-btn flex items-center justify-between">
@@ -483,7 +555,7 @@
           </div>
           <!-- Cold Brew -->
 
-          <div class="cold-brew bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
+          <div class="cold-brew bg-RomanCoffee hover:bg-MacaroniCheese text-AlbescentWhite hover:text-SepiaSkin min-w-60 p-3 rounded-3xl flex flex-col gap-2 shadow-2xl">
               <img src="/assets/menu_item_4.png" alt="" class='rounded-3xl'>
               <h3 class="text-xl font-bold">Cold Brew</h3>
               <div class="price-and-btn flex items-center justify-between">
@@ -500,36 +572,36 @@
       </section>
 
       <!-- about us -->
-       <section class="h-[85vh] bg-AlbescentWhite mt-10 py-14">
-        <div class="about-us-container flex items-center gap-28 px-32 ">
-          <div class="about-us-img-container border-[6px] border-White  rounded-2xl cursor-pointer transform transition-transform duration-300 hover:scale-105">
-            <img src="/assets/images/chloe-leis-AeECO_I_8Xg-unsplash.jpg" alt="" class="object-cover w-[65vw] h-[65vh] rounded-2xl ">
+       <section class="lg:h-[85vh] bg-AlbescentWhite mt-10 lg:mt-20 px-6 md:px-10 lg:px-28 py-4 md:py-6 lg:py-6">
+        <div class="about-us-container flex flex-col md:flex-row lg:flex-row items-center gap-10 lg:gap-20 lg:p-20">
+          <div class="about-us-img-container bg-White border-[6px] border-White rounded-2xl overflow-hidden max-w-60 md:max-w-80 lg:max-w-[33vw] max-h-60 md:max-h-80 lg:max-h-[65vh] cursor-pointer transform transition-transform duration-300 hover:scale-105 mt-2">
+            <img src="/assets/images/chloe-leis-AeECO_I_8Xg-unsplash.jpg" alt="" class="object-cover w-full h-full" >
           </div>
 
-          <div class="about-us-context flex flex-col items-start gap-4">
+          <div class="about-us-context">
             <h2 class='contentHeading'>About <span class="underlineHeading">us</span></h2>
-            <h3 class='text-lg font-semibold text-BrownTumbleweed'>Slip into perfection</h3>
-            <p class='text-RomanCoffee w-[500px] leading-relaxed'>Our Coffee World, where passion meets precision in every brew, bringing you a symphony of flavors and a journey through the rice, aromatic realms of coffee craftsmanship.</p>
+            <h3 class='text-lg font-semibold text-BrownTumbleweed mt-3'>Slip into perfection</h3>
+            <p class='text-RomanCoffee lg:leading-relaxed mt-2'>Our Coffee World, where passion meets precision in every brew, bringing you a symphony of flavors and a journey through the rice, aromatic realms of coffee craftsmanship.</p>
             <button
-              class="flex items-center gap-2 bg-BrownTumbleweed hover:bg-MacaroniCheese text-MacaroniCheese hover:text-BrownTumbleweed text-sm font-bold mt-10 py-3 px-10 rounded-full transform transition-transform duration-300 hover:scale-105"
+              class="flex items-center gap-2 bg-BrownTumbleweed hover:bg-MacaroniCheese text-MacaroniCheese hover:text-BrownTumbleweed text-sm lg:text-base font-bold mt-10 py-2 lg:py-3 px-5 lg:px-8 rounded-full transform transition-transform duration-300 hover:scale-105"
             >
               Start Your Order
             </button>
           </div>
         </div>
-       </section>
+      </section>
     </main>
 
-    <footer class="h-[80vh] mt-12">
-      <div class="top-footer flex items-center justify-between px-32 mb-8">
-        <div class="footer-logo flex items-center gap-3">
-          <div class="logo w-16 cursor-pointer">
+    <footer class="lg:h-[80vh] my-8 lg:my-12 px-6 md:px-10 lg:px-28 py-4 md:py-6 lg:py-6">
+      <div class="top-footer flex items-center justify-between">
+        <div class="footer-logo  flex items-center gap-1 md:gap-2 lg:gap-3">
+          <div class="logo w-12 md:w-14 lg:w-16 cursor-pointer">
             <img src="/assets/CoffeeLove.svg" alt="company logo" />
           </div>
-          <h2 class='text-2xl text-BrownTumbleweed font-bold'>CoffeeLove</h2>
+          <h2 class='text-xl md:text-2xl lg:text-2xl text-BrownTumbleweed font-bold'>CoffeeLove</h2>
         </div>
 
-        <div class="social-links">
+        <div class="social-links hidden md:flex lg:flex">
           <ul class="flex items-center gap-4">
             <li>
               <a href="#"><img src="/assets/facebook_logo.png" alt="" /></a>
@@ -543,25 +615,41 @@
           </ul>
         </div>
       </div>
-      <hr class='h-px w-[70%] border border-MacaroniCheese/35 mx-auto'>
-      <div class="bottom-footer flex justify-between px-32 mx-28 mt-10">
-        <nav>
-          <ul class="flex flex-col gap-6">
-            <il class="footerHeading">Home</il>
-            <il class="footerHeading">Menu</il>
-            <il class="footerHeading">Delivery</il>
-            <il class="footerHeading">Location</il>
-          </ul>
-        </nav>
 
-        <div class="newsletter flex flex-col gap-4">
-          <h3 class="capitalize text-xl text-BrownTumbleweed font-semibold">NewsLetter</h3>
-          <div class="input-box bg-AlbescentWhite rounded-md flex items-center">
-            <input type="email" name="" id="" placeholder="Your Email" class='outline-none bg-AlbescentWhite text-sm text-SepiaSkin placeholder:text-SepiaSkin p-4 rounded-l-md'>
-            <button class='bg-SepiaSkin hover:bg-Black p-4 text-sm text-AlbescentWhite rounded-r-md'>Subscribe</button>
+      <hr class='h-px w-[70%] md:w-[85%] lg:w-[90%] border border-MacaroniCheese/35 my-3 mx-auto'>
+
+      <div class="bottom-footer flex flex-col md:flex-row lg:flex-row justify-between mt-5 lg:mt-10">
+          <nav>
+            <ul class="flex flex-col gap-3">
+              <il class="footerHeading">Home</il>
+              <il class="footerHeading">Menu</il>
+              <il class="footerHeading">Delivery</il>
+              <il class="footerHeading">Location</il>
+            </ul>
+          </nav>
+
+          <div class="newsletter flex flex-col gap-4 mt-5">
+            <h3 class="capitalize text-xl lg:text-2xl text-BrownTumbleweed font-bold">NewsLetter</h3>
+            <div class="input-box bg-AlbescentWhite w-fit rounded flex items-center">
+              <input type="email" name="" id="" placeholder="Your Email" class='outline-none bg-AlbescentWhite text-sm text-SepiaSkin placeholder:text-SepiaSkin px-4 py-2 rounded-l w-[150px] md:w-[200px] lg:w-[250px]'>
+              <button class='bg-SepiaSkin hover:bg-Black p-3 lg:p-4 text-sm text-AlbescentWhite rounded-r'>Subscribe</button>
+            </div> 
           </div>
         </div>
-      </div>
+
+        <section class='mobile-and-tab-links mt-12 flex md:hidden lg:hidden justify-center'>
+          <ul class="flex items-center gap-4">
+            <li>
+              <a href="#"><img src="/assets/facebook_logo.png" alt="" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="/assets/instagram-logo.png" alt="" /></a>
+            </li>
+            <li>
+              <a href="#"><img src="/assets/twitter-logo.png" alt="" /></a>
+            </li>
+          </ul>
+        </section>
     </footer>
   </body>
 </html>
