@@ -21,6 +21,27 @@ heroBtn.addEventListener('mouseout', () => {
   btnCart.classList.remove('bg-BrownTumbleweed')
 })
 
+// for mobile
+heroBtn.addEventListener('click', () => {
+  heroBtn.classList.add(
+    'text-BrownTumbleweed',
+    'bg-MacaroniCheese',
+    'transform'
+  )
+  btnCart.classList.add('bg-BrownTumbleweed')
+  btnCart.classList.remove('bg-MacaroniCheese')
+})
+
+heroBtn.addEventListener('click', () => {
+  heroBtn.classList.remove(
+    'text-BrownTumbleweed',
+    'bg-MacaroniCheese',
+    'transform'
+  )
+  btnCart.classList.add('bg-MacaroniCheese')
+  btnCart.classList.remove('bg-BrownTumbleweed')
+})
+
 const hamburgerContainer = document.querySelector('.hamburger-container')
 const mobileBar = document.querySelector('.mobile-bar')
 const mobileBarBtn = document.querySelector('.mobile-bar-btn')
